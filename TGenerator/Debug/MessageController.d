@@ -1,0 +1,1 @@
+MessageController.o: ../MessageController.cpp

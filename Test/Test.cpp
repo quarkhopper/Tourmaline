@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "messages.hpp"
+#include "messages.cpp"
 
 using namespace std;
 using namespace torm;
@@ -14,6 +15,7 @@ int main() {
 	string xml_ser = msg_tx.getXML();
 	cout << "Ready to send: " << xml_ser << endl;
 
-	MessageBase* msg = MessageFactory::createMessage(xml_ser);
+	PutPointMessage msg_rx = MessageFactory::createMessage<PutPointMessage>(xml_ser);
+	cout <<  msg_rx.getXML() << endl;
 }
 

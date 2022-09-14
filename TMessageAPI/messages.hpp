@@ -33,37 +33,32 @@ public:
 // Base class for all API messages
 class MessageBase: public IMessage {
 public:
-	MessageBase() {
-	}
-	;
+	MessageBase(const MessageBase&) {}
+	MessageBase()=default;
 	MessageType messageType = MessageType::PutPoint;
 	pugi::xml_document doc;
 	pugi::xml_node root;
 	std::string getXML();
 	void encodeXML();
 	void parseXML(std::string xml_ser);
-	virtual ~MessageBase() {
-	}
-	;
 };
 
 // API Message to set a pixel color on the canvas
 class PutPointMessage: public MessageBase {
 public:
+	PutPointMessage(const PutPointMessage&) {}
 	PutPointMessage();
 	void encodeXML();
 	void parseXML(std::string xml_ser);
 	int x = 0;
 	int y = 0;
 	int color = 0;
-	virtual ~PutPointMessage() {
-	}
-	;
 };
 
 class MessageFactory {
 public:
-	static MessageBase* createMessage(std::string xml_ser);
+	template<class T>
+	static T createMessage(std::string xml_ser);
 };
 }
 

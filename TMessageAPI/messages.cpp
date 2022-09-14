@@ -17,6 +17,11 @@ using namespace torm;
 using namespace std;
 using namespace pugi;
 
+template<typename T, typename... Args>
+unique_ptr<T> make_unique(Args&&... args) {
+    return std::unique_ptr<T>(new T(std::forward<Args>(args)...));
+}
+
 void MessageBase::parseXML(string xml_ser) {
 	this->doc.load_string(xml_ser.c_str());
 	this->root = this->doc.root();
@@ -57,16 +62,11 @@ void PutPointMessage::encodeXML() {
 	data_root.append_child("color").text().set(to_string(this->color).c_str());
 }
 
-MessageBase* MessageFactory::createMessage(string xml_ser) {
-	// TODO: actually parse the string here to get the type to use
-	MessageBase mb;
-	MessageBase* msg;
-	mb.parseXML(xml_ser);
-	switch (mb.messageType) {
-	case MessageType::PutPoint:
-		auto msg = make_unique<PutPointMessage>();
-		msg->parseXML(xml_ser);
-		break;
-	}
-	return msg;
+template<class T>
+T MessageFactory::createMessage(string xml_ser) {
+	auto msg = make_unique<T>();
+	msg->parseXML(xml_ser);
+	return *msg;
 }
+
+

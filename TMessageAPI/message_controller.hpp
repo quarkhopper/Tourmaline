@@ -8,10 +8,5 @@
 #ifndef MESSAGECONTROLLER_HPP_
 #define MESSAGECONTROLLER_HPP_
 
-#include <string>
-
-class MessageController {};
-
-class Utils {};
 
 #endif /* MESSAGECONTROLLER_HPP_ */

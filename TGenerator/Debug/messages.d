@@ -1,1 +1,0 @@
-messages.o: ../messages.cpp

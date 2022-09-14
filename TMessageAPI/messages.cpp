@@ -22,6 +22,10 @@ unique_ptr<T> make_unique(Args&&... args) {
     return std::unique_ptr<T>(new T(std::forward<Args>(args)...));
 }
 
+MessageBase::MessageBase(const MessageBase& old_msg) {
+	this->messageType = old_msg.messageType;
+}
+
 void MessageBase::parseXML(string xml_ser) {
 	this->doc.load_string(xml_ser.c_str());
 	this->root = this->doc.root();
@@ -47,9 +51,24 @@ PutPointMessage::PutPointMessage() {
 	this->messageType = MessageType::PutPoint;
 }
 
+PutPointMessage::PutPointMessage(const PutPointMessage& old_msg) {
+	this->messageType = MessageType::PutPoint;
+	this->xml_ser = old_msg.xml_ser;
+	this->doc.load_string(this->xml_ser.c_str());
+	this->root = this->doc.root();
+	this->x = old_msg.x;
+	this->y = old_msg.y;
+	this->color = old_msg.color;
+}
+
 void PutPointMessage::parseXML(string xml_ser) {
+	this->xml_ser = xml_ser;
 	MessageBase::parseXML(xml_ser);
 	xml_node data_root = this->root.child("data");
+	xml_node a = data_root.child("x");
+	xml_text b = a.text();
+	string bb = b.as_string();
+	int c = b.as_int();
 	this->x = data_root.child("x").text().as_int();
 	this->y = data_root.child("y").text().as_int();
 	this->color = data_root.child("color").text().as_int();

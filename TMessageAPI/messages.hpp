@@ -33,9 +33,10 @@ public:
 // Base class for all API messages
 class MessageBase: public IMessage {
 public:
-	MessageBase(const MessageBase&) {}
+	MessageBase(const MessageBase&);
 	MessageBase()=default;
 	MessageType messageType = MessageType::PutPoint;
+	std::string xml_ser;
 	pugi::xml_document doc;
 	pugi::xml_node root;
 	std::string getXML();
@@ -46,7 +47,7 @@ public:
 // API Message to set a pixel color on the canvas
 class PutPointMessage: public MessageBase {
 public:
-	PutPointMessage(const PutPointMessage&) {}
+	PutPointMessage(const PutPointMessage&);
 	PutPointMessage();
 	void encodeXML();
 	void parseXML(std::string xml_ser);

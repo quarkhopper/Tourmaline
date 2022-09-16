@@ -28,12 +28,13 @@ MessageBase::MessageBase(const MessageBase& old_msg) {
 
 void MessageBase::parseXML(string xml_ser) {
 	this->doc.load_string(xml_ser.c_str());
-	this->root = this->doc.root();
+	this->root = this->doc.root().first_child();
 	this->messageType =
 			static_cast<MessageType>(this->root.attribute("type").as_int());
 }
 
 string MessageBase::getXML() {
+	this->doc.reset();
 	MessageBase::encodeXML();
 	stringstream ss;
 	this->doc.save(ss);
@@ -55,7 +56,7 @@ PutPointMessage::PutPointMessage(const PutPointMessage& old_msg) {
 	this->messageType = MessageType::PutPoint;
 	this->xml_ser = old_msg.xml_ser;
 	this->doc.load_string(this->xml_ser.c_str());
-	this->root = this->doc.root();
+	this->root = this->doc.root().first_child();
 	this->x = old_msg.x;
 	this->y = old_msg.y;
 	this->color = old_msg.color;
@@ -65,10 +66,6 @@ void PutPointMessage::parseXML(string xml_ser) {
 	this->xml_ser = xml_ser;
 	MessageBase::parseXML(xml_ser);
 	xml_node data_root = this->root.child("data");
-	xml_node a = data_root.child("x");
-	xml_text b = a.text();
-	string bb = b.as_string();
-	int c = b.as_int();
 	this->x = data_root.child("x").text().as_int();
 	this->y = data_root.child("y").text().as_int();
 	this->color = data_root.child("color").text().as_int();

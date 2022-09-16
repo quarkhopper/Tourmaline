@@ -13,9 +13,9 @@ int main() {
 	msg_tx.color = 3;
 
 	string xml_ser = msg_tx.getXML();
-	cout << "Ready to send: " << xml_ser << endl;
+	cout << "TX: " << xml_ser << endl;
 
 	PutPointMessage msg_rx = MessageFactory::createMessage<PutPointMessage>(xml_ser);
-	cout <<  msg_rx.getXML() << endl;
+	cout << "RX:"  << msg_rx.getXML() << endl;
 }
 

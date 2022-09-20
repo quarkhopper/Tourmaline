@@ -55,10 +55,10 @@ dependents:
 	-cd /home/quarkhopper/dev/TMessageAPI/Debug && $(MAKE) clean all
 
 # Tool invocations
-TGenerator: $(OBJS) $(USER_OBJS) /home/quarkhopper/dev/TMessageAPI/Debug/libtormapi.so makefile $(OPTIONAL_TOOL_DEPS)
+TGenerator: $(OBJS) $(USER_OBJS) makefile $(OPTIONAL_TOOL_DEPS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C++ Linker'
-	g++ `pkg-config --libs gtk+-3.0` -L"/home/quarkhopper/dev/TMessageAPI/Debug" -L/usr/local/lib -o "TGenerator" $(OBJS) $(USER_OBJS) $(LIBS) -ltormapi -lzmq -lgdk-3 -lpangocairo-1.0 -lpango-1.0 -lharfbuzz -lgdk_pixbuf-2.0 -lcairo-gobject -lcairo -lgobject-2.0 -lglib-2.0 -lgtk-3 -latk-1.0 -lgio-2.0
+	g++ `pkg-config --libs gtk+-3.0` -L/usr/local/lib -L"/home/quarkhopper/dev/TMessageAPI/Debug" -o "TGenerator" $(OBJS) $(USER_OBJS) $(LIBS) -ltormapi -lzmq -lgdk-3 -lpangocairo-1.0 -lpango-1.0 -lharfbuzz -lgdk_pixbuf-2.0 -lcairo-gobject -lcairo -lgobject-2.0 -lglib-2.0 -lgtk-3 -latk-1.0 -lgio-2.0
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -68,6 +68,5 @@ clean:
 	-@echo ' '
 
 .PHONY: all clean dependents main-build
-/home/quarkhopper/dev/TMessageAPI/Debug/libtormapi.so:
 
 -include ../makefile.targets

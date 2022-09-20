@@ -31,7 +31,7 @@ public:
 			throw(std::runtime_error("recv_multipart returned abnormally."));
 		}
 		catch (const std::exception& e) {
-			std::cout << "Exception occurred which trying to get messages: " << e.what() << std::endl;
+			std::cout << "Exception occurred while trying to get messages: " << e.what() << std::endl;
 		}
 	}
 };

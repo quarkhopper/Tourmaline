@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include "messages.hpp"
-#include "messages.cpp"
+//#include "messages.cpp"
 
 using namespace std;
 using namespace torm;
@@ -15,7 +15,7 @@ int main() {
 	string xml_ser = msg_tx.getXML();
 	cout << "TX: " << xml_ser << endl;
 
-	PutPointMessage msg_rx = MessageFactory::createMessage<PutPointMessage>(xml_ser);
-	cout << "RX:"  << msg_rx.getXML() << endl;
+	auto msg_rx = MessageFactory::createMessage<PutPointMessage>(xml_ser);
+	cout << "RX:"  << msg_rx->getXML() << endl;
 }
 

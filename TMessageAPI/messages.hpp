@@ -10,6 +10,7 @@
 #include <pugixml.hpp>
 #include <string>
 #include <map>
+#include <memory>
 #include <typeinfo>
 
 #ifndef MESSAGES_HPP_
@@ -59,7 +60,11 @@ public:
 class MessageFactory {
 public:
 	template<class T>
-	static T createMessage(std::string xml_ser);
+	static std::unique_ptr<T> createMessage(std::string xml_ser) {
+		auto msg = std::make_unique<T>();
+		msg->parseXML(xml_ser);
+		return msg;
+	}
 };
 }
 

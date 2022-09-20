@@ -17,10 +17,10 @@ using namespace torm;
 using namespace std;
 using namespace pugi;
 
-template<typename T, typename... Args>
-unique_ptr<T> make_unique(Args&&... args) {
-    return std::unique_ptr<T>(new T(std::forward<Args>(args)...));
-}
+//template<typename T, typename... Args>
+//unique_ptr<T> make_unique(Args&&... args) {
+//    return std::unique_ptr<T>(new T(std::forward<Args>(args)...));
+//}
 
 MessageBase::MessageBase(const MessageBase& old_msg) {
 	this->messageType = old_msg.messageType;
@@ -72,17 +72,20 @@ void PutPointMessage::parseXML(string xml_ser) {
 }
 
 void PutPointMessage::encodeXML() {
+	/********************
+	 * Encode the particulars of a PutPointMessage into XML
+	 */
 	xml_node data_root = this->root.append_child("data");
 	data_root.append_child("x").text().set(to_string(this->x).c_str());
 	data_root.append_child("y").text().set(to_string(this->y).c_str());
 	data_root.append_child("color").text().set(to_string(this->color).c_str());
 }
 
-template<class T>
-T MessageFactory::createMessage(string xml_ser) {
-	auto msg = make_unique<T>();
-	msg->parseXML(xml_ser);
-	return *msg;
-}
+//template<class T>
+//T MessageFactory::createMessage(string xml_ser) {
+//	auto msg = make_unique<T>();
+//	msg->parseXML(xml_ser);
+//	return *msg;
+//}
 
 

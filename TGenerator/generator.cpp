@@ -13,6 +13,10 @@
 #include <messages.hpp>
 
 int main (int   argc, char *argv[]) {
+
+	PutPoint
+
+
 	zmq::context_t ctx;
 	zmq::socket_t sock1(ctx, zmq::socket_type::push);
 	sock1.bind("tcp://127.0.0.1:*");

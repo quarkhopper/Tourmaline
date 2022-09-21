@@ -1,7 +1,3 @@
-################################################################################
-# Automatically-generated file. Do not edit!
-################################################################################
-
 -include ../makefile.init
 
 RM := rm -rf
@@ -58,7 +54,7 @@ dependents:
 Tourmaline: $(OBJS) $(USER_OBJS) /home/quarkhopper/dev/TMessageAPI/Debug/libtormapi.so makefile $(OPTIONAL_TOOL_DEPS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C++ Linker'
-	g++ `pkg-config --libs gtk+-3.0` -L/usr/local/lib -L"/home/quarkhopper/dev/TMessageAPI" -L"/home/quarkhopper/dev/TMessageAPI/Debug" -o "Tourmaline" $(OBJS) $(USER_OBJS) $(LIBS) -lzmq -lgdk-3 -lpangocairo-1.0 -lpango-1.0 -lharfbuzz -lgdk_pixbuf-2.0 -lcairo-gobject -lcairo -lgobject-2.0 -lglib-2.0 -lgtk-3 -latk-1.0 -lgio-2.0 -l/home/quarkhopper/dev/TMessageAPI/Debug/libtormapi.so
+	g++ `pkg-config --libs gtk4` -L/usr/local/lib -L"/home/quarkhopper/dev/TMessageAPI/Debug" -o "Tourmaline" $(OBJS) $(USER_OBJS) $(LIBS) -lzmq -latk-1.0 
 	@echo 'Finished building target: $@'
 	@echo ' '
 

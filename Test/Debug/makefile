@@ -27,7 +27,7 @@ ifneq ($(strip $(C_UPPER_DEPS)),)
 -include $(C_UPPER_DEPS)
 endif
 endif
-
+(())
 -include ../makefile.defs
 
 OPTIONAL_TOOL_DEPS := \

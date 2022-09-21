@@ -63,6 +63,11 @@ PutPointMessage::PutPointMessage(const PutPointMessage& old_msg) {
 }
 
 void PutPointMessage::parseXML(string xml_ser) {
+	/*******************************************
+	 * Set members with an XML serialized string.
+	 * This call begins by calling the base class
+	 * definition to parse base Message members.
+	 */
 	this->xml_ser = xml_ser;
 	MessageBase::parseXML(xml_ser);
 	xml_node data_root = this->root.child("data");
@@ -80,12 +85,5 @@ void PutPointMessage::encodeXML() {
 	data_root.append_child("y").text().set(to_string(this->y).c_str());
 	data_root.append_child("color").text().set(to_string(this->color).c_str());
 }
-
-//template<class T>
-//T MessageFactory::createMessage(string xml_ser) {
-//	auto msg = make_unique<T>();
-//	msg->parseXML(xml_ser);
-//	return *msg;
-//}
 
 

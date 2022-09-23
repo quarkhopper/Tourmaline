@@ -48,13 +48,13 @@ all: main-build
 main-build: Tourmaline
 
 dependents:
-	-cd /home/quarkhopper/dev/TMessageAPI/Debug && $(MAKE) clean all
+	-cd /home/quarkhopper/dev/TormCore/Debug && $(MAKE) clean all
 
 # Tool invocations
-Tourmaline: $(OBJS) $(USER_OBJS) /home/quarkhopper/dev/TMessageAPI/Debug/libtormapi.so makefile $(OPTIONAL_TOOL_DEPS)
+Tourmaline: $(OBJS) $(USER_OBJS) /home/quarkhopper/dev/TormCore/Debug/libtormapi.so makefile $(OPTIONAL_TOOL_DEPS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C++ Linker'
-	g++ `pkg-config --libs gtk4` -L/usr/local/lib -L"/home/quarkhopper/dev/TMessageAPI/Debug" -o "Tourmaline" $(OBJS) $(USER_OBJS) $(LIBS) -lzmq -latk-1.0 
+	g++ `pkg-config --libs gtk4` -L/usr/local/lib -o "Tourmaline" $(OBJS) $(USER_OBJS) $(LIBS) -lzmq -latk-1.0 
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -64,6 +64,6 @@ clean:
 	-@echo ' '
 
 .PHONY: all clean dependents main-build
-/home/quarkhopper/dev/TMessageAPI/Debug/libtormapi.so:
+/home/quarkhopper/dev/TormCore/Debug/libtormapi.so:
 
 -include ../makefile.targets

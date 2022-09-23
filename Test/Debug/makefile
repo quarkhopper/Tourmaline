@@ -50,7 +50,7 @@ all: main-build
 main-build: Test
 
 dependents:
-	-cd /home/quarkhopper/dev/TMessageAPI/Debug && $(MAKE) all
+	-cd /home/quarkhopper/dev/TormCore/Debug && $(MAKE) all
 
 # Tool invocations
 Test: $(OBJS) $(USER_OBJS) makefile $(OPTIONAL_TOOL_DEPS)

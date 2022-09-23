@@ -24,7 +24,7 @@
 								<option id="gnu.cpp.compiler.exe.debug.option.optimization.level.584262990" name="Optimization Level" superClass="gnu.cpp.compiler.exe.debug.option.optimization.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
 								<option defaultValue="gnu.cpp.compiler.debugging.level.max" id="gnu.cpp.compiler.exe.debug.option.debugging.level.1288601021" name="Debug Level" superClass="gnu.cpp.compiler.exe.debug.option.debugging.level" useByScannerDiscovery="false" valueType="enumerated"/>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.cpp.compiler.option.include.paths.474264856" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TMessageAPI}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TormCore}&quot;"/>
 									<listOptionValue builtIn="false" value="/usr/local/include"/>
 									<listOptionValue builtIn="false" value="/usr/include/at-spi2-atk/2.0"/>
 									<listOptionValue builtIn="false" value="/usr/include/at-spi-2.0"/>
@@ -57,7 +57,7 @@
 								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.exe.debug.option.optimization.level.1049599487" name="Optimization Level" superClass="gnu.c.compiler.exe.debug.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
 								<option defaultValue="gnu.c.debugging.level.max" id="gnu.c.compiler.exe.debug.option.debugging.level.1553916901" name="Debug Level" superClass="gnu.c.compiler.exe.debug.option.debugging.level" useByScannerDiscovery="false" valueType="enumerated"/>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.compiler.option.include.paths.387228689" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TMessageAPI}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TormCore}&quot;"/>
 									<listOptionValue builtIn="false" value="/usr/local/include"/>
 									<listOptionValue builtIn="false" value="/usr/include/at-spi2-atk/2.0"/>
 									<listOptionValue builtIn="false" value="/usr/include/at-spi-2.0"/>
@@ -87,6 +87,7 @@
 							<tool id="cdt.managedbuild.tool.gnu.c.linker.exe.debug.1025062848" name="GCC C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.exe.debug"/>
 							<tool command="g++ `pkg-config --libs gtk+-3.0`" id="cdt.managedbuild.tool.gnu.cpp.linker.exe.debug.541876521" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.exe.debug">
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.cpp.link.option.libs.525419457" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" useByScannerDiscovery="false" valueType="libs">
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="tormapi"/>
 									<listOptionValue builtIn="false" value="pugixml"/>
 									<listOptionValue builtIn="false" value="zmq"/>
 									<listOptionValue builtIn="false" value="gdk-3"/>
@@ -101,10 +102,10 @@
 									<listOptionValue builtIn="false" value="gtk-3"/>
 									<listOptionValue builtIn="false" value="atk-1.0"/>
 									<listOptionValue builtIn="false" value="gio-2.0"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TMessageAPI/Debug/tormapi}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TormCore/Debug/tormapi}&quot;"/>
 								</option>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.cpp.link.option.paths.1464655924" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TMessageAPI/Debug}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TormCore/Debug}&quot;"/>
 									<listOptionValue builtIn="false" value="/usr/local/lib"/>
 								</option>
 								<option id="gnu.cpp.link.option.shared.457089451" name="Shared (-shared)" superClass="gnu.cpp.link.option.shared" useByScannerDiscovery="false" value="false" valueType="boolean"/>
@@ -117,7 +118,7 @@
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.assembler.exe.debug.535078189" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.exe.debug">
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.both.asm.option.include.paths.864647281" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TMessageAPI}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TormCore}&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.945897851" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>
@@ -127,23 +128,6 @@
 			</storageModule>
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings">
 				<externalSettings containerId="org.eclipse.cdt.managedbuilder.pkgconfig.extSettings" factoryId="org.eclipse.cdt.core.extension.container.factory">
-					<externalSetting contentTypes="org.eclipse.cdt.managedbuilder.core.compiledObjectFile">
-						<entry flags="RESOLVED" kind="libraryPath" name="/usr/local/lib"/>
-						<entry flags="UNDEFINED" kind="libraryFile" name="atk-1.0" srcPrefixMapping="" srcRootPath=""/>
-						<entry flags="UNDEFINED" kind="libraryFile" name="gobject-2.0" srcPrefixMapping="" srcRootPath=""/>
-						<entry flags="UNDEFINED" kind="libraryFile" name="glib-2.0" srcPrefixMapping="" srcRootPath=""/>
-						<entry flags="UNDEFINED" kind="libraryFile" name="zmq" srcPrefixMapping="" srcRootPath=""/>
-						<entry flags="UNDEFINED" kind="libraryFile" name="gdk-3" srcPrefixMapping="" srcRootPath=""/>
-						<entry flags="UNDEFINED" kind="libraryFile" name="pangocairo-1.0" srcPrefixMapping="" srcRootPath=""/>
-						<entry flags="UNDEFINED" kind="libraryFile" name="pango-1.0" srcPrefixMapping="" srcRootPath=""/>
-						<entry flags="UNDEFINED" kind="libraryFile" name="harfbuzz" srcPrefixMapping="" srcRootPath=""/>
-						<entry flags="UNDEFINED" kind="libraryFile" name="gdk_pixbuf-2.0" srcPrefixMapping="" srcRootPath=""/>
-						<entry flags="UNDEFINED" kind="libraryFile" name="cairo-gobject" srcPrefixMapping="" srcRootPath=""/>
-						<entry flags="UNDEFINED" kind="libraryFile" name="cairo" srcPrefixMapping="" srcRootPath=""/>
-						<entry flags="UNDEFINED" kind="libraryFile" name="gtk-3" srcPrefixMapping="" srcRootPath=""/>
-						<entry flags="UNDEFINED" kind="libraryFile" name="gio-2.0" srcPrefixMapping="" srcRootPath=""/>
-						<entry flags="UNDEFINED" kind="libraryFile" name="pugixml" srcPrefixMapping="" srcRootPath=""/>
-					</externalSetting>
 					<externalSetting contentTypes="org.eclipse.cdt.core.cSource:org.eclipse.cdt.core.cxxSource">
 						<entry flags="NONE" kind="includePath" name="/usr/local/include"/>
 						<entry flags="NONE" kind="includePath" name="/usr/include/at-spi2-atk/2.0"/>
@@ -190,11 +174,28 @@
 						<entry flags="BUILTIN" kind="includePath" name="/usr/include/dbus-1.0"/>
 						<entry flags="BUILTIN" kind="includePath" name="/usr/lib/x86_64-linux-gnu/dbus-1.0/include"/>
 					</externalSetting>
+					<externalSetting contentTypes="org.eclipse.cdt.managedbuilder.core.compiledObjectFile">
+						<entry flags="RESOLVED" kind="libraryPath" name="/usr/local/lib"/>
+						<entry flags="UNDEFINED" kind="libraryFile" name="atk-1.0" srcPrefixMapping="" srcRootPath=""/>
+						<entry flags="UNDEFINED" kind="libraryFile" name="gobject-2.0" srcPrefixMapping="" srcRootPath=""/>
+						<entry flags="UNDEFINED" kind="libraryFile" name="glib-2.0" srcPrefixMapping="" srcRootPath=""/>
+						<entry flags="UNDEFINED" kind="libraryFile" name="zmq" srcPrefixMapping="" srcRootPath=""/>
+						<entry flags="UNDEFINED" kind="libraryFile" name="gdk-3" srcPrefixMapping="" srcRootPath=""/>
+						<entry flags="UNDEFINED" kind="libraryFile" name="pangocairo-1.0" srcPrefixMapping="" srcRootPath=""/>
+						<entry flags="UNDEFINED" kind="libraryFile" name="pango-1.0" srcPrefixMapping="" srcRootPath=""/>
+						<entry flags="UNDEFINED" kind="libraryFile" name="harfbuzz" srcPrefixMapping="" srcRootPath=""/>
+						<entry flags="UNDEFINED" kind="libraryFile" name="gdk_pixbuf-2.0" srcPrefixMapping="" srcRootPath=""/>
+						<entry flags="UNDEFINED" kind="libraryFile" name="cairo-gobject" srcPrefixMapping="" srcRootPath=""/>
+						<entry flags="UNDEFINED" kind="libraryFile" name="cairo" srcPrefixMapping="" srcRootPath=""/>
+						<entry flags="UNDEFINED" kind="libraryFile" name="gtk-3" srcPrefixMapping="" srcRootPath=""/>
+						<entry flags="UNDEFINED" kind="libraryFile" name="gio-2.0" srcPrefixMapping="" srcRootPath=""/>
+						<entry flags="UNDEFINED" kind="libraryFile" name="pugixml" srcPrefixMapping="" srcRootPath=""/>
+					</externalSetting>
 				</externalSettings>
-				<externalSettings containerId="TMessageAPI;" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier">
+				<externalSettings containerId="TormCore;" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier">
 					<externalSetting>
-						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/TMessageAPI"/>
-						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/TMessageAPI/Debug"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/TormCore"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/TormCore/Debug"/>
 						<entry flags="RESOLVED" kind="libraryFile" name="tormapi" srcPrefixMapping="" srcRootPath=""/>
 					</externalSetting>
 				</externalSettings>

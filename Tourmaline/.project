@@ -3,7 +3,7 @@
 	<name>Tourmaline</name>
 	<comment></comment>
 	<projects>
-		<project>TMessageAPI</project>
+		<project>TormCore</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

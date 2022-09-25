@@ -27,7 +27,7 @@ ifneq ($(strip $(C_UPPER_DEPS)),)
 -include $(C_UPPER_DEPS)
 endif
 endif
-(())
+
 -include ../makefile.defs
 
 OPTIONAL_TOOL_DEPS := \
@@ -56,7 +56,7 @@ dependents:
 Test: $(OBJS) $(USER_OBJS) makefile $(OPTIONAL_TOOL_DEPS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C++ Linker'
-	g++ -L/usr/local/lib -o "Test" $(OBJS) $(USER_OBJS) $(LIBS) -lpugixml -lzmq -lgdk-3 -lpangocairo-1.0 -lpango-1.0 -lharfbuzz -lgdk_pixbuf-2.0 -lcairo-gobject -lcairo -lgobject-2.0 -lglib-2.0 -lgtk-3 -latk-1.0 -lgio-2.0 -ltormapi
+	g++ -L/usr/local/lib -o "Test" $(OBJS) $(USER_OBJS) $(LIBS) 
 	@echo 'Finished building target: $@'
 	@echo ' '
 

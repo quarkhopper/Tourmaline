@@ -1,20 +1,35 @@
 #include <iostream>
 #include <string>
-#include "messages.hpp"
+#include <functional>
+#include <vector>
 
 using namespace std;
-using namespace torm;
+
+
+class Handlers
+{
+public:
+	static void generic_handler(string print_me) {
+		cout << print_me << endl;
+	}
+};
+
+auto cb0 = []() {
+	Handlers::generic_handler("called from cb0");
+};
+
+auto cb1 = []() {
+	Handlers::generic_handler("called from cb1");
+};
+
 
 int main() {
-	PutPointMessage msg_tx;
-	msg_tx.x = 1;
-	msg_tx.y = 2;
-	msg_tx.color = 3;
+	vector<function<void()>> vec;
+	vec.push_back(cb0);
+	vec.push_back(cb1);
 
-	string xml_ser = msg_tx.getXML();
-	cout << "TX: " << xml_ser << endl;
-
-	auto msg_rx = MessageFactory::createMessage<PutPointMessage>(xml_ser);
-	cout << "RX:"  << msg_rx->getXML() << endl;
+	for(auto& op : vec) {
+		op();
+	}
 }
 

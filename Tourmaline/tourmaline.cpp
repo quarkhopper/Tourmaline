@@ -15,38 +15,11 @@
 #include <vector>
 #include "gtk/gtk.h"
 #include "messages.hpp"
+#include "connection_manager.hpp"
 
 using namespace std;
-using namespace zmq;
-
-static vector<message_t> msgs;
-static socket_t sock;
-
-class MessageHandler {
-public:
-	static void recieve() {
-		try
-		{
-			const auto ret = recv_multipart(
-					sock, back_inserter(msgs));
-			if (!ret)
-			throw(runtime_error("recv_multipart returned abnormally."));
-		}
-		catch (const exception& e) {
-			cout << "Exception occurred while trying to get messages: " << e.what() << endl;
-		}
-	}
-
-	static void listen() {
-		for(;;) {
-			MessageHandler::recieve();
-		}
-	}
-};
 
 int main(int argc, char *argv[]) {
-	zmq::context_t ctx;
-	sock = zmq::socket_t (ctx, zmq::socket_type::rep);
 	const std::string endpoint = "tcp://127.0.0.1:" + std::string(argv[1]);
 	std::cout << "Starting server on " << endpoint << std::endl;
 	sock.connect(endpoint);

@@ -15,46 +15,45 @@
 #include <vector>
 #include "gtk/gtk.h"
 #include "messages.hpp"
-//
-//static std::vector<zmq::message_t> msgs;
-//static zmq::socket_t sock;
-//
-//class MessageHandler {
-//public:
-//	void operator()() {
-//		msgs.clear();
-//		try
-//		{
-//			const auto ret = zmq::recv_multipart(
-//					sock, std::back_inserter(msgs));
-//			if (!ret)
-//			throw(std::runtime_error("recv_multipart returned abnormally."));
-//		}
-//		catch (const std::exception& e) {
-//			std::cout << "Exception occurred while trying to get messages: " << e.what() << std::endl;
-//		}
-//	}
-//
-//	void listen() {
-//		for(;;) {
-//			zmq::message_t request;
-//			sock.recv(&request);
-//		}
-//	}
-//};
+
+using namespace std;
+using namespace zmq;
+
+static vector<message_t> msgs;
+static socket_t sock;
+
+class MessageHandler {
+public:
+	static void recieve() {
+		try
+		{
+			const auto ret = recv_multipart(
+					sock, back_inserter(msgs));
+			if (!ret)
+			throw(runtime_error("recv_multipart returned abnormally."));
+		}
+		catch (const exception& e) {
+			cout << "Exception occurred while trying to get messages: " << e.what() << endl;
+		}
+	}
+
+	static void listen() {
+		for(;;) {
+			MessageHandler::recieve();
+		}
+	}
+};
 
 int main(int argc, char *argv[]) {
-//	zmq::context_t ctx;
-//	sock = zmq::socket_t (ctx, zmq::socket_type::rep);
-//	const std::string endpoint = "tcp://127.0.0.1:" + std::string(argv[1]);
-//	std::cout << "Starting server on " << endpoint << std::endl;
-//	sock.connect(endpoint);
-//	auto handle = std::async(std::launch::async, MessageHandler());
-//	handle.get();
-//
-//	for (int i = 0; i < msgs.size(); i++)
-//		std::cout << "Message: " << msgs[i].to_string() << std::endl;
-//
+	zmq::context_t ctx;
+	sock = zmq::socket_t (ctx, zmq::socket_type::rep);
+	const std::string endpoint = "tcp://127.0.0.1:" + std::string(argv[1]);
+	std::cout << "Starting server on " << endpoint << std::endl;
+	sock.connect(endpoint);
+
+	auto listener = std::async(std::launch::async, MessageHandler::listen);
+	listener.get();
+
 //	GtkWidget *window;
 //	gtk_init (&argc, &argv);
 //	window = gtk_window_new (GTK_WINDOW_TOPLEVEL);

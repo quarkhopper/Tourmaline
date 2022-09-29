@@ -65,6 +65,7 @@ public:
 		msg->parseXML(xml_ser);
 		return msg;
 	}
+	static MessageType getMessageType(std::string xml_ser);
 };
 }
 

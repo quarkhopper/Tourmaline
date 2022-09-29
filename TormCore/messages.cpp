@@ -17,12 +17,7 @@ using namespace torm;
 using namespace std;
 using namespace pugi;
 
-//template<typename T, typename... Args>
-//unique_ptr<T> make_unique(Args&&... args) {
-//    return std::unique_ptr<T>(new T(std::forward<Args>(args)...));
-//}
-
-MessageBase::MessageBase(const MessageBase& old_msg) {
+MessageBase::MessageBase(const MessageBase &old_msg) {
 	this->messageType = old_msg.messageType;
 }
 
@@ -52,7 +47,7 @@ PutPointMessage::PutPointMessage() {
 	this->messageType = MessageType::PutPoint;
 }
 
-PutPointMessage::PutPointMessage(const PutPointMessage& old_msg) {
+PutPointMessage::PutPointMessage(const PutPointMessage &old_msg) {
 	this->messageType = MessageType::PutPoint;
 	this->xml_ser = old_msg.xml_ser;
 	this->doc.load_string(this->xml_ser.c_str());
@@ -86,4 +81,8 @@ void PutPointMessage::encodeXML() {
 	data_root.append_child("color").text().set(to_string(this->color).c_str());
 }
 
-
+MessageType MessageFactory::getMessageType(string xml_ser) {
+	MessageBase mb;
+	mb.parseXML(xml_ser);
+	return mb.messageType;
+}

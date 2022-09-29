@@ -7,8 +7,8 @@
 
 #include "connection_manager.hpp"
 
+#include <optional>
 #include <utility>
-#include <vector>
 
 using namespace torm;
 using namespace zmq;
@@ -21,13 +21,21 @@ ConnectionManager::ConnectionManager(TormRoll roll, string endpoint) {
 	this->m_context = context_t();
 	this->m_socket = socket_t(this->m_context, stype);
 	this->m_socket.connect(endpoint);
-//	this->m_callbacks = vector<MessageType, msg_callback>();
+	this->m_callbacks = unordered_map<MessageType, msg_callback>();
 	this->m_active = false;
 }
 
 void ConnectionManager::receive() {
-	/* call MessageType Message::getMessageType(std::string xml_ser); */
-	/* get the callback in this->m_callbacks and call it if there is one */
+	message_t msg;
+	auto ret = this->m_socket.recv(msg);
+	if (*ret == 0) {
+		return;
+	}
+	string xml_ser = msg.to_string();
+	MessageType msg_type = MessageFactory::getMessageType(xml_ser);
+	if (this->m_callbacks.find(msg_type) != this->m_callbacks.end()) {
+		this->m_callbacks[msg_type](&msg);
+	}
 //
 //	try {
 //		const auto ret = recv_multipart(*this->m_socket,

@@ -17,7 +17,7 @@
 
 namespace torm {
 
-typedef std::function<void(zmq::message_t)> msg_callback;
+typedef std::function<void(zmq::message_t*)> msg_callback;
 
 enum TormRoll {
 	Canvas, Generator
